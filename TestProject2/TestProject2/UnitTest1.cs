@@ -83,14 +83,16 @@ namespace TestProject2
             #region Assertions
             Assert.AreEqual(HttpStatusCode.OK, respone.StatusCode, "Status code is not equal to 200");
             Assert.AreEqual(petData.name, respone.Data.name, "Pet Name did not match.");
-            Assert.AreEqual(petData.category, respone.Data.category, "Category did not match.");
+            Assert.AreEqual(petData.category.name, respone.Data.category.name, "Category did not match.");
             for  (int i = 0; i < respone.Data.photoUrls.Count(); i++) {
                 Assert.AreEqual(petData.photoUrls[i], respone.Data.photoUrls[i], "PhotoURLs did not match.");
             
             }
-            
-              for  (int x = 0; x < respone.Data.photoUrls.Count(); x++) {
+
+            for (int x = 0; x < respone.Data.tags.Count(); x++)
+            {
                 Assert.AreEqual(petData.tags[x].name, respone.Data.tags[x].name, "Tags did not match.");
+
             }
             
             
@@ -110,10 +112,6 @@ namespace TestProject2
 
 
 
-        [TestMethod]
-        public void TestMethod2()
-        {
-        }
 
 
        
